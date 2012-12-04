@@ -13,7 +13,7 @@ function sendVoiceMsg(dest,lang,msg){
 		};
   var is_private = localStorage['is_private_number']
   if (is_private != undefined && is_private !='false'){
-	data.push({caller_id:"private"});
+	data.caller_id="private";
   }
   $.ajax({
 		type : "POST",
