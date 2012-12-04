@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="https://d1fnpdk9svbocx.cloudfront.net/libs/bootstrap-hoiio/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="https://d1fnpdk9svbocx.cloudfront.net/libs/bootstrap-hoiio/css/bootstrap-responsive.min.css">
+		<link type="text/css" rel="stylesheet" href="popup.css"
+	</head>
+	<div class="contaner">
+		<div class="row">
+			<div class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputNumber">Number: </label>
+					<div class="controls">
+						<input type="text" id="inputNumber" placeholder="Number">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputLanguage">Language:</label>
+					<select id="inputLanguage" disabled="disableed" >
+						<option value="en">English</option>
+						<option value="zh">Chinese</option>
+						<option value="zh-HK">Cantonese</option>
+						<option value="ja">Japanese</option>
+						<option value="ko">Korean</option>
+					</select>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputMsg">Message: </label>
+					<div class="controls">
+						<textarea type="text" id="inputMsg"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<input type="checkbox" id="enable_voice_msg" style="margin-right: 15px;margin-bottom: 5px;">
+			<label class="control-label" for="enable_voice_msg" style="display:inline">use voice message</label>
+		</div>
+		<div id="enable_send_sms_if_not_answer_row" class="row hide">
+			<input type="checkbox" id="enable_send_sms_if_not_answer" style="margin-right: 15px;margin-bottom: 5px;">
+			<label class="control-label" for="enable_send_sms_if_not_answer" style="display:inline">auto send sms if not answer</label>
+		</div>
+		<div class="row">
+			<div style="float:right">
+				<button class="btn btn-primary" type="button" id="sendBtn">Send</button>
+				<button class="btn" type="button" id="optionBtn">Option</button>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div id="status" class="hide">
+			</div>
+			<button type="button" class="btn btn-link hide" id="sendSMSMsg" style="padding-left:0px">Send SMS Message</button>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="sendmessage.js"></script>
+	<script src="popup.js"></script>
+<html>

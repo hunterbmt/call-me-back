@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="https://d1fnpdk9svbocx.cloudfront.net/libs/bootstrap-hoiio/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="https://d1fnpdk9svbocx.cloudfront.net/libs/bootstrap-hoiio/css/bootstrap-responsive.min.css">
+		<link type="text/css" rel="stylesheet" href="option.css"
+	</head>
+	<div class="contaner">
+		<h2>Call-Me-Back-Configuration</h2>
+		<div class="row">
+			<div class="span3 bs-docs-sidebar">
+				<ul class="nav nav-list bs-docs-sidenav affix-top">
+					<li ><a href="#accountsetting" id="btn-accountsetting" ><i class="icon-chevron-right" ></i> Account Setting</a></li>
+					<li ><a href="#advancedsetting" id="btn-advancedsetting"><i class="icon-chevron-right" ></i> Advanced Setting</a></li>
+				</ul>
+			</div>
+			<div class="span9">
+				<section id="accountsetting">
+					<div class="page-header">
+						<h3>Account Setting</h3>
+						<div class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label" for="inputAppId">App Id:</label>
+								<div class="controls">
+									<input type="text" id="inputAppId" placeholder="App Id">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputAccessToken">Access Token:</label>
+								<div class="controls">
+									<input type="text" id="inputAccessToken" placeholder="Access Token">
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="advancedsetting" class="hide">
+					<div class="page-header">
+						<h3>Advanced Option</h3>
+						<div class="form-horizontal">
+							<div class="control-group">
+								<input type="checkbox" id="enable_private_number" style="margin-left: 20px;margin-top: 9px;">
+								<label class="control-label" for="enable_private_number">Hide your number</label>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputMaxDuration">Max Duration:</label>
+								<div class="controls">
+									<input type="text" id="inputMaxDuration" placeholder="The maximum duration(in seconds).">
+								</div>
+							</div> 
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="options.js"></script>
+<html>
