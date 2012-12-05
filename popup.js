@@ -34,17 +34,48 @@ function bindEvent(){
 function sendOnClick(){
   var destNumber = $('#inputNumber').val();
   var lang = $('#inputLanguage option:selected').val();
-  var msg = $('#inputMsg').val()
-  sendVoiceMsg(destNumber,lang,msg)
+  var msg = $('#inputMsg').val();
+  
+  if(!checkMaxLength(msg,500)){
+	setStatus("Your message is empty or more than 500 chars",true);
+	return;
+  }
+  
+  if(!validPhoneNumber(destNumber)){
+	setStatus("Invalid Phone Number format",true);
+	return;
+  }
+  
+  var result = sendVoiceMsg(destNumber,lang,msg)
+  
+  if(result == false){
+	setStatus("Missing AppID or Access Token. Please make sure you configured them in option page",true);
+	return;
+  }
+  
   var checked = $('#enable_send_sms_if_not_answer:checked').val();
+  
   if($('#enable_send_sms_if_not_answer').is('hide') == false &&checked != undefined){
-	setTimeout(function(){
-        autoSendSmsIfNotAnswer();
-    },30000);
+	chrome.extension.sendRequest({ func: "autoSendSms" ,dest:destNumber , msg:msg});
   }
  }
  function sendSMSOnClick(){
   var destNumber = $('#inputNumber').val();
   var msg = $('#inputMsg').val();
-  sendSmsMsg(destNumber,msg);
+  if(!checkMaxLength(msg,450)){
+	setStatus("Your message is empty or more than 450 chars",true);
+	return;
+  }
+  
+  if(!validPhoneNumber(destNumber)){
+	setStatus("Invalid Phone Number format",true);
+	return;
+  }
+  
+  var result = sendSmsMsg(destNumber,msg);
+  
+  if(result == false){
+	setStatus("Missing AppID or Access Token. Please make sure you configured them in option page",true);
+  }
+  
  }

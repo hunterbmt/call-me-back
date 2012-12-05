@@ -1,8 +1,9 @@
 function sendVoiceMsg(dest,lang,msg){
+  showLoadingIndicator();
   var app_id = localStorage['app_id']
   var access_token = localStorage['access_token']
-  if(app_id == undefined || app_id.length < 1|| access_token == undefined || access_token.length<1 ){
-	return;
+  if(isEmpty(app_id)|| isEmpty(access_token)){
+	return false;
   };
   var msg_str = '<speech language="'+lang+'">'+msg+'</speech>'
   var data = {
@@ -21,26 +22,25 @@ function sendVoiceMsg(dest,lang,msg){
 		data : data,
 		success : function(result) {
 			if (result.status == 'success_ok') {
-				$('#status').addClass('alert-success');
-				$('#status').html('Your message has been sent successfull');
+				setStatus('Your message has been sent successfull');
 				localStorage['txn_ref'] = result.txn_ref;
 			} else {
 				if(status == 'error_msg_cannot_convert_text'){
-					$('#status').addClass('alert-error');
-					$('#status').html("Can't send your voice message");
+					setStatus("Can't send your voice message",true);
 					$('#sendSMSMsg').show();
 				}
 				
 			}
-			$('#status').show().delay(5000).fadeOut('fast');
+			hideLoadingIndicator();
 		}
   });
 }
 function sendSmsMsg(dest,msg){
+  showLoadingIndicator();
   var app_id = localStorage['app_id']
   var access_token = localStorage['access_token']
-  if(app_id == undefined || app_id.length < 1|| access_token == undefined || access_token.length<1 ){
-	return;
+  if(isEmpty(app_id)|| isEmpty(access_token)){
+	return false;
   };
   $.ajax({
 		type : "POST",
@@ -53,38 +53,30 @@ function sendSmsMsg(dest,msg){
 		}),
 		success : function(result) {
 			if (result.status == 'success_ok') {
-				$('#status').addClass('alert-success');
-				$('#status').html('Your message has been sent successfull');
+				setStatus('Your message has been sent successfull');
 			} else {
-				$('#status').addClass('alert-error');
-				$('#status').html("Can't send your SMS message");
+				setStatus("Can't send your SMS message",true);
 			}
-			$('#status').show().delay(5000).fadeOut('fast');
+			hideLoadingIndicator();
 		}
   });
 }
-function autoSendSmsIfNotAnswer(){
-	var app_id = localStorage['app_id']
-	var access_token = localStorage['access_token']
-	var txn_ref = localStorage['txn_ref']
-	if(app_id == undefined || app_id.length < 1|| access_token == undefined || access_token.length<1 || txn_ref == undefined || txn_ref.length < 1){
-		return;
-	};
-	
-	$.ajax({
-		type : "POST",
-		url : "https://secure.hoiio.com/open/voice/query_status",
-		data : ({
-			app_id : app_id,
-			access_token:access_token,
-			txn_ref: txn_ref
-		}),
-		success : function(result) {
-			if (result.status == 'success_ok') {
-				if(result.call_status_dest1 !='answered'){
-					sendSMSOnClick();
-				}
-			}
-		}
-  });
+function setStatus(msg,isError){
+	isError = typeof isError !== 'undefined' ? isError : false;
+	if(isError){
+		$('#status').addClass('alert-error');
+	}
+	else {
+		$('#status').addClass('alert-success');
+	}
+	$('#status').html(msg);
+	$('#status').show().delay(5000).fadeOut('fast');
+}
+function showLoadingIndicator(){
+	$('#btnSendLabel').hide();
+	$('#btnSendLoading').show();
+}
+function hideLoadingIndicator(){
+	$('#btnSendLabel').show();
+	$('#btnSendLoading').hide();
 }
