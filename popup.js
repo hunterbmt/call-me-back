@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () { 
   bindEvent();
+  openOptionPageIfConfigEmpty();
 });
 function bindEvent(){
 	$('#optionBtn').click(function(){
@@ -16,20 +17,25 @@ function bindEvent(){
 		$('#sendBtn').unbind('click');
 		var checked = $('#enable_voice_msg:checked').val();
 		if (checked != undefined){
-			$('#inputLanguage').removeAttr('disabled');
+			$('#languageDiv').show();
 			$('#enable_send_sms_if_not_answer_row').show();
 			$('#sendBtn').click(function(){
 				sendOnClick();
 			});
 		}
 		else{
-			$('#inputLanguage').attr('disabled', 'disabled');
+			$('#languageDiv').hide()
 			$('#enable_send_sms_if_not_answer_row').hide();
 			$('#sendBtn').click(function(){
 				sendSMSOnClick();
 			});
 		}
 	});
+}
+function openOptionPageIfConfigEmpty(){
+    if(isEmpty(localStorage['app_id'])||isEmpty(localStorage['access_token'])){
+		$('#optionBtn').click()
+	}
 }
 function sendOnClick(){
   var destNumber = $('#inputNumber').val();

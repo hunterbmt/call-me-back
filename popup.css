@@ -1,3 +1,10 @@
 input[type="text"]{
-	min-height:30px
+	min-height:30px;
+	color:black;
+}
+text-success{
+   color :#468847;
+}
+text-error{
+   color :#b94a48;
 }

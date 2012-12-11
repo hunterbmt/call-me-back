@@ -64,10 +64,10 @@ function sendSmsMsg(dest,msg){
 function setStatus(msg,isError){
 	isError = typeof isError !== 'undefined' ? isError : false;
 	if(isError){
-		$('#status').addClass('alert-error');
+		$('#status').addClass('text-error');
 	}
 	else {
-		$('#status').addClass('alert-success');
+		$('#status').addClass('text-success');
 	}
 	$('#status').html(msg);
 	$('#status').show().delay(5000).fadeOut('fast');

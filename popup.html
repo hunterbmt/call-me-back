@@ -14,20 +14,20 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label" for="inputMsg">Message: </label>
+					<div class="controls">
+						<textarea type="text" id="inputMsg" style="min-width:220px" placeholder="Maximum 500 chars" rows="5"></textarea>
+					</div>
+				</div>
+				<div class="control-group hide" id="languageDiv">
 					<label class="control-label" for="inputLanguage">Language:</label>
-					<select id="inputLanguage" disabled="disableed" >
+					<select id="inputLanguage" >
 						<option value="en">English</option>
 						<option value="zh">Chinese</option>
 						<option value="zh-HK">Cantonese</option>
 						<option value="ja">Japanese</option>
 						<option value="ko">Korean</option>
 					</select>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="inputMsg">Message: </label>
-					<div class="controls">
-						<textarea type="text" id="inputMsg" style="min-width:220px" placeholder="Maximum 500 chars" rows="5"></textarea>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -39,6 +39,7 @@
 			<input type="checkbox" id="enable_send_sms_if_not_answer" style="margin-right: 15px;margin-bottom: 5px;">
 			<label class="control-label" for="enable_send_sms_if_not_answer" style="display:inline">auto send sms if not answer</label>
 		</div>
+		<br/>
 		<div class="row">
 			<div style="float:right">
 				<button class="btn btn-primary" type="button" id="sendBtn" style="height:30px;width:60px">
@@ -54,6 +55,7 @@
 			</div>
 			<button type="button" class="btn btn-link hide" id="sendSMSMsg" style="padding-left:0px">Send SMS Message</button>
 		</div>
+		<br/>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="validation.js"></script>
