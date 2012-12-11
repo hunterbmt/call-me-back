@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 function bindEvent(){
 	$('#optionBtn').click(function(){
 		chrome.tabs.create({'url': chrome.extension.getURL("options.html")}, function(tab) {
+			
+			chrome.extension.sendRequest({func: "addRemoveTab",tabId:tab.id});
 		});
 	});
 	$('#sendSMSMsg').click(function(){
@@ -33,8 +35,11 @@ function bindEvent(){
 	});
 }
 function openOptionPageIfConfigEmpty(){
-    if(isEmpty(localStorage['app_id'])||isEmpty(localStorage['access_token'])){
-		$('#optionBtn').click()
+	if(localStorage['is_open_optiontab']!='true'){
+		if(isEmpty(localStorage['app_id'])||isEmpty(localStorage['access_token'])){
+			$('#optionBtn').click();
+			localStorage['is_open_optiontab'] = true;
+		}
 	}
 }
 function sendOnClick(){

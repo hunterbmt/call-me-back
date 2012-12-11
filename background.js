@@ -30,5 +30,16 @@ chrome.extension.onRequest.addListener(
 				autoSendSmsIfNotAnswer(request.dest,request.msg);
 			},60000);
 		}
+		else if(request.func == "addRemoveTab"){
+			addOnRemoveTabListener(request.tabId);
+		}
     }
 );
+
+function addOnRemoveTabListener(msgTabId){
+	chrome.tabs.onRemoved.addListener(function(tabid, removeInfo) { 
+    if (tabid == msgTabId) {
+		localStorage['is_open_optiontab'] = false;
+    }   
+});
+}
