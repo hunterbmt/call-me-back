@@ -2,9 +2,9 @@
   "name": "Call Me Back ",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "Send a Voice Message or SMS Message to your friend when you run out of money .",
+  "description": "Send a Voice Message or SMS to your friends when you run out of money. Let them call you back!",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "img/icon.png",
 	"default_popup": "popup.html"
   },
   "background": {
@@ -17,5 +17,10 @@
 	"https://secure.hoiio.com/",
 	"tabs",
 	"background"
- ]
+  ],
+  "icons":{
+      "16": "img/icon16.png",
+      "48": "img/icon48.png",
+      "128": "img/icon.png"
+  }
 }
