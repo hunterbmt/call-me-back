@@ -2,6 +2,9 @@ input[type="text"]{
 	min-height:30px;
 	color:black;
 }
+textarea[type="text"]{
+    color:black;
+}
 text-success{
    color :#468847;
 }
